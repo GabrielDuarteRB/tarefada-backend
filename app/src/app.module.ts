@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UsuarioModule } from './usuario/usuario.module';
+import { SemanaModule } from './semana/semana.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { UsuarioModule } from './usuario/usuario.module';
       }),
     }),
     UsuarioModule,
+    SemanaModule,
   ],
 })
 export class AppModule {}

@@ -1,4 +1,7 @@
-import { Table, Model, Column, DataType } from 'sequelize-typescript'
+import { Table, Model, Column, DataType, HasMany, BelongsToMany } from 'sequelize-typescript'
+import { Exclude } from 'class-transformer';
+import { Semana } from '../../semana/entities/semana.entity'
+import { SemanaUsuario } from '../../semana/entities/semana-usuario.entity'
 
 @Table({ tableName: 'usuario', timestamps: false })
 export class Usuario extends Model<Usuario> {
@@ -34,6 +37,7 @@ export class Usuario extends Model<Usuario> {
   @Column({
     type: DataType.STRING(100),
   })
+  @Exclude({ toPlainOnly: true })
   declare senha: string
 
   @Column({
@@ -41,4 +45,16 @@ export class Usuario extends Model<Usuario> {
     allowNull: true
   })
   declare foto?: string
+
+  @HasMany(() => Semana)
+  semanas_criadas: Semana[]
+
+  @BelongsToMany(() => Semana, () => SemanaUsuario)
+  semanas: Semana[];
+
+  toJSON(): Record<string, any> {
+    const values: Record<string, any> = { ...this.get() };
+    delete values.senha;
+    return values;
+  }
 }
