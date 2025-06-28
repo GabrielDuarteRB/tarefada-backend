@@ -15,6 +15,10 @@ export class SemanaRepository {
     private readonly semanaUsuarioModel: typeof SemanaUsuario,
   ) {}
 
+  findOne(id: number) {
+    return this.semanaModel.findByPk(id)
+  }
+
   async create(dados) {
     return this.semanaModel.create(dados)
   }
