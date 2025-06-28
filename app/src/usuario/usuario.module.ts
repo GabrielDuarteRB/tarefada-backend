@@ -7,6 +7,8 @@ import { UsuarioService } from './usuario.service';
 import { UsuarioController } from './usuario.controller';
 import { UsuarioRepository } from './usuario.repository'
 import { Usuario } from './entities/usuario.entity'
+import { Semana } from '../semana/entities/semana.entity'
+import { SemanaUsuario } from '../semana/entities/semana-usuario.entity'
 
 @Module({
   imports: [
@@ -15,7 +17,7 @@ import { Usuario } from './entities/usuario.entity'
       secret: 'chave_ultra_secreta',
       signOptions: { expiresIn: '24h' },
     }),
-    SequelizeModule.forFeature([Usuario])
+    SequelizeModule.forFeature([Usuario, Semana, SemanaUsuario])
   ],
   controllers: [UsuarioController],
   providers: [JwtStrategy, UsuarioService, UsuarioRepository],
