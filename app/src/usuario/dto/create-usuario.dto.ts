@@ -34,8 +34,11 @@ export class CreateUsuarioDto {
   @MaxLength(100, { message: "Senha deve ter no máximo 100 caracteres" })
   confirmarSenha: string;
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({
+    description: 'Foto de perfil',
+    type: 'string',
+    format: 'binary',
+  })
   @IsOptional()
-  @IsString()
-  foto?: string;
+  foto?: any;
 }

@@ -46,6 +46,10 @@ export class SemanaService {
     return this.semanaRepository.findActuallyWeek(id)
   }
 
+  async getRankingAtLastWeek(id: number) {
+    return await this.semanaRepository.getRankingAtLastWeek(id)
+  }
+
   async participated(id_semana: number, id_usuario: number) {
     const semanaAtiva = await this.findActuallyWeek(id_usuario)
 
