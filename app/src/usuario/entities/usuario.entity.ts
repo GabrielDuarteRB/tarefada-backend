@@ -2,6 +2,7 @@ import { Table, Model, Column, DataType, HasMany, BelongsToMany } from 'sequeliz
 import { Exclude } from 'class-transformer';
 import { Semana } from '../../semana/entities/semana.entity'
 import { SemanaUsuario } from '../../semana/entities/semana-usuario.entity'
+import { Tarefa } from '../../tarefa/entities/tarefa.entity'
 
 @Table({ tableName: 'usuario', timestamps: false })
 export class Usuario extends Model<Usuario> {
@@ -51,6 +52,9 @@ export class Usuario extends Model<Usuario> {
 
   @BelongsToMany(() => Semana, () => SemanaUsuario)
   semanas: Semana[];
+
+  @HasMany(() => Tarefa)
+  tarefas_atribuidas: Tarefa[]
 
   toJSON(): Record<string, any> {
     const values: Record<string, any> = { ...this.get() };

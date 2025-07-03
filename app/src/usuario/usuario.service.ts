@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcrypt';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsuarioRepository } from './usuario.repository'
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
@@ -53,11 +53,14 @@ export class UsuarioService {
     return `This action returns a #${id} usuario`;
   }
 
-  update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
-    return `This action updates a #${id} usuario`;
-  }
+  async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
+    const [linhasAfetadas, tarefa] = await this.usuarioRepository.update(id, updateUsuarioDto);
 
-  remove(id: number) {
-    return `This action removes a #${id} usuario`;
+
+    if (linhasAfetadas === 0) {
+      throw new NotFoundException(`Usuario com id ${id} não encontrada`);
+    }
+
+    return tarefa[0];
   }
 }

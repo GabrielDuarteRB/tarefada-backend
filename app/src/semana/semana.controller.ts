@@ -39,6 +39,15 @@ export class SemanaController {
     }
   }
 
+  @Get('ranking')
+  getRankingAtLastWeek(@Request() req) {
+    try {
+      return this.semanaService.getRankingAtLastWeek(req.user.id_usuario);
+    } catch (error) {
+      return error
+    }
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateSemanaDto: UpdateSemanaDto) {
     try {

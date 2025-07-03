@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UsuarioModule } from './usuario/usuario.module';
 import { SemanaModule } from './semana/semana.module';
+import { TarefaModule } from './tarefa/tarefa.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { SemanaModule } from './semana/semana.module';
     }),
     UsuarioModule,
     SemanaModule,
+    TarefaModule,
   ],
 })
 export class AppModule {}

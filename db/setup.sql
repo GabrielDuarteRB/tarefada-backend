@@ -25,19 +25,13 @@ CREATE TABLE tarefa (
     id_tarefa SERIAL PRIMARY KEY,
     id_usuario_atribuido INTEGER,
     titulo VARCHAR(200) NOT NULL,
-    data DATE NOT NULL,
-    ponto INTEGER,
+    data_inicio DATE NOT NULL,
+    data_termino DATE,
+    ponto INTEGER NOT NULL,
     status status_tarefa,
-    comprovante TEXT
-    FOREIGN KEY (id_usuario_atribuido) REFERENCES usuario(id_usuario),
-);
-
--- Associação tarefa <-> semana
-CREATE TABLE tarefa_semana (
-    id_tarefa_semana SERIAL PRIMARY KEY,
-    id_tarefa INTEGER NOT NULL,
+    comprovante TEXT,
     id_semana INTEGER NOT NULL,
-    FOREIGN KEY (id_tarefa) REFERENCES tarefa(id_tarefa),
+    FOREIGN KEY (id_usuario_atribuido) REFERENCES usuario(id_usuario),
     FOREIGN KEY (id_semana) REFERENCES semana(id_semana)
 );
 

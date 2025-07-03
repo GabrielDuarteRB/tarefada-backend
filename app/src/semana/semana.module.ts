@@ -13,5 +13,6 @@ import { SemanaUsuario } from '../semana/entities/semana-usuario.entity'
   ],
   controllers: [SemanaController],
   providers: [SemanaService, SemanaRepository],
+  exports: [SequelizeModule, SemanaRepository],
 })
 export class SemanaModule {}
