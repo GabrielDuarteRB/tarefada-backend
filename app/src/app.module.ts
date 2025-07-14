@@ -9,7 +9,6 @@ import { TarefaModule } from './tarefa/tarefa.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env.local',
     }),
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
