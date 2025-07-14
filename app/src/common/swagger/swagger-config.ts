@@ -17,4 +17,5 @@ export const swaggerConfig = new DocumentBuilder()
   .setContact('Suporte', 'https://suporte.suaapi.com', 'suporte@suaapi.com')
   .setLicense('MIT', 'https://opensource.org/licenses/MIT')
   .addServer('http://localhost:3000', 'Ambiente de Desenvolvimento')
+  .addServer('https://tarefada-backend.onrender.com', 'Ambiente de Produção')
   .build();
