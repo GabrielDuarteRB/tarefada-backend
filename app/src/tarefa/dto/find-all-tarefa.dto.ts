@@ -1,4 +1,4 @@
-import { IsOptional, IsEnum, IsInt } from 'class-validator';
+import { IsOptional, IsEnum, IsInt, IsString } from 'class-validator';
 import { Type } from 'class-transformer';
 import { StatusTarefa } from '../enum/StatusTarefa';
 import { ApiPropertyOptional } from '@nestjs/swagger';
@@ -20,4 +20,9 @@ export class FindAllTarefaDto {
   @Type(() => Number)
   @IsInt()
   id_semana?: number;
+
+  @ApiPropertyOptional({ type: String })
+  @IsOptional()
+  @IsString()
+  data_inicio?: string;
 }
