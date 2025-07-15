@@ -3,7 +3,7 @@ import {
   Get,
   Post,
   Body,
-  Patch,
+  Put,
   Delete,
   Param,
   Query,
@@ -56,7 +56,7 @@ export class TarefaController {
     }
   }
 
-  @Patch(':id')
+  @Put(':id')
   @UseInterceptors(FileInterceptor('comprovante'))
   @ApiConsumes('multipart/form-data')
   update(
