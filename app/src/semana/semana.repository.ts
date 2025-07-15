@@ -30,6 +30,12 @@ export class SemanaRepository {
     return this.semanaUsuarioModel.create(dados)
   }
 
+  deleteActuallyWeek(id: number) {
+    return this.semanaUsuarioModel.destroy({
+      where: { id_usuario: id }
+    });
+  }
+
   async update(id: number, updateSemanaDto: UpdateSemanaDto) {
     return await this.semanaModel.update(updateSemanaDto, {
       where: { id_semana: id },
