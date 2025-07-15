@@ -1,7 +1,7 @@
 import { PartialType, ApiPropertyOptional } from '@nestjs/swagger';
 import {
   IsDateString,
-  IsInt,
+  IsString,
   IsOptional,
   IsEnum
 } from 'class-validator';
@@ -11,7 +11,7 @@ import { StatusTarefa } from '../enum/StatusTarefa'
 export class UpdateTarefaDto extends PartialType(CreateTarefaDto) {
 
   @ApiPropertyOptional()
-  @IsInt()
+  @IsString()
   @IsOptional()
   id_usuario_atribuido?: number
 
