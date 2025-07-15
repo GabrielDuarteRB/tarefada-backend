@@ -12,13 +12,14 @@ export class TarefaRepository {
   ) {}
 
   findAll(query: FindAllTarefaDto) {
-    const { status, id_usuario_atribuido, id_semana } = query;
+    const { status, id_usuario_atribuido, id_semana, data_inicio } = query;
 
     const where: any = {};
 
     if (status) where.status = status;
     if (id_usuario_atribuido) where.id_usuario_atribuido = id_usuario_atribuido;
     if (id_semana) where.id_semana = id_semana;
+    if (data_inicio) where.data_inicio = data_inicio;
 
     return this.tarefaModel.findAll({ where })
   }
