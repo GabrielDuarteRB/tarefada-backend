@@ -73,6 +73,7 @@ export class TarefaController {
       };
       return this.tarefaService.update(+id, data);
     } catch (error) {
+      console.log(error)
       return error
     }
   }
