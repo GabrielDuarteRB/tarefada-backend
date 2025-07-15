@@ -46,6 +46,10 @@ export class SemanaService {
     return this.semanaRepository.findActuallyWeek(id)
   }
 
+  deleteActuallyWeek(id: number) {
+    return this.semanaRepository.deleteActuallyWeek(id)
+  }
+
   async getRankingAtLastWeek(id: number) {
     return await this.semanaRepository.getRankingAtLastWeek(id)
   }

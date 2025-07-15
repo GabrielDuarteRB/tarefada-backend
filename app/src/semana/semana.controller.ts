@@ -39,6 +39,15 @@ export class SemanaController {
     }
   }
 
+  @Delete('atual')
+  deleteActuallyWeek(@Request() req) {
+    try {
+      return this.semanaService.deleteActuallyWeek(req.user.id_usuario);
+    } catch (error) {
+      return error
+    }
+  }
+
   @Get('ranking')
   getRankingAtLastWeek(@Request() req) {
     try {
