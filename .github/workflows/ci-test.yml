@@ -1,0 +1,41 @@
+name: Testes
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  test_integracao:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Testes integracao
+        run: npm run test:integration
+
+  test_unitario:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: app
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Teste unitario
+        run: npm run test:unit
+
