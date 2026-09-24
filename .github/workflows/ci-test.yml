@@ -8,6 +8,9 @@ on:
 jobs:
   test_integracao:
     runs-on: ubuntu-latest
+    default:
+      run:
+        working-directory: app
 
     steps:
       - name: Checkout
@@ -16,11 +19,15 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Testes unitarios
+      - name: Testes integracao
         run: npm run test:integration
 
   test_unitario:
     runs-on: ubuntu-latest
+
+    default:
+      run:
+        working-directory: app
 
     steps:
       - name: Checkout
