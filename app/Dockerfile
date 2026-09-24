@@ -1,15 +1,15 @@
-FROM node:22.14-alpine
+FROM node:24-alpine
 
 WORKDIR /app
 
-RUN npm install -g @nestjs/cli
-
-COPY package.json ./
-
-RUN npm install
+COPY package.json package-lock.json ./
+RUN npm ci
 
 COPY . .
 
-EXPOSE 4000
+ENV NODE_ENV=development
+ENV PORT=3000
+
+EXPOSE 3000
 
 CMD ["npm", "run", "start:dev"]

@@ -4,10 +4,15 @@ services:
     container_name: api-tarefada
     ports:
       - "3000:3000"
-    env_file:
-      - ./app/.env.local
+    environment:
+      DB_HOST: db-tarefada
+      DB_PORT: 5432
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: tarefada
     volumes:
       - ./app:/app
+      - /app/node_modules
     restart: unless-stopped
     depends_on:
       - db-tarefada
@@ -38,5 +43,4 @@ volumes:
 networks:
   tarefada-networks:
     driver: bridge
-
 
