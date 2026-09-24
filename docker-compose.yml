@@ -43,3 +43,4 @@ volumes:
 networks:
   tarefada-networks:
     driver: bridge
+
