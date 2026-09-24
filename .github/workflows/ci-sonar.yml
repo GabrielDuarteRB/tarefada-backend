@@ -1,0 +1,30 @@
+name: CI do sonar
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  sonar:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Rodando sonar
+        uses: SonarSource/sonarqube-scan-action@v8
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.organization=gabrielduarterb
+            -Dsonar.projectKey=GabrielDuarteRB_tarefada
+            -Dsonar.qualitygate.wait=true
+
+
+
