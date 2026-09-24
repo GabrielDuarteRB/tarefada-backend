@@ -3,7 +3,7 @@ name: CI do sonar
 on:
   pull_request:
     branches:
-      - develop
+      - master
 
 jobs:
   sonar:
