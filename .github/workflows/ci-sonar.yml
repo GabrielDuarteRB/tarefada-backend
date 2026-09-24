@@ -23,7 +23,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=gabrielduarterb
-            -Dsonar.projectKey=GabrielDuarteRB_tarefada
+            -Dsonar.projectKey=GabrielDuarteRB_tarefada-backend
             -Dsonar.qualitygate.wait=true
 
 
